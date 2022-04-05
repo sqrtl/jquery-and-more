@@ -1,10 +1,11 @@
+
 // =================[Body Tags]=============
 const body = $('body');
 
 // =================[JQuery of appending the chart into the div (First Chart)]==============
 const div1 = $('<div></div>');
 const chartCavnas = $('<canvas id="myChart"></canvas>');
-div1.append(chartCavnas);
+div1.append(chartCavnas, '<hr></hr>');
 body.append(div1);
 
 // ==================[Code for the Sample Graph]==================
@@ -63,7 +64,7 @@ const deckLists = [
 ];
 
 const ygoData = {
-    label: deckLists,
+    labels: deckLists,
     datasets: [{
         label: 'OCG Metagame Report #9, #10',
         data: [20, 8, 8, 7, 7, 4, 4, 4, 4, 4, 3, 3, 3, 21],
@@ -83,13 +84,20 @@ const ygoData = {
             'rgb(213,204,255)',
             'rgb(242,243,244)'
         ],
-        hoverOffset: 4
+        hoverOffset: 40,
+        borderColor: 'rgb(0.00,0.51,0.50,0.1)'
     }]
 };
 
 const ygoConfig = {
     type: 'doughnut',
-    data: ygoData
+    data: ygoData,
+    options: {
+        legend: {
+            position: 'left'
+        },
+        radius: '75%',
+    }
 }
 
 const ygoDoughnut = new Chart(
